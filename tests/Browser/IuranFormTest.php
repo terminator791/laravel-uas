@@ -19,7 +19,7 @@ class IuranFormTest extends DuskTestCase
             'alamat' => 'Jl. Mawar No. 10',
         ]);
 
-        $this->browse(function (Browser $browser) use ($warga) {
+        $this->browse(function (Browser $browser) {
             $browser->visit('/iuran')
                 ->waitForText('Daftar Iuran')
                 ->click('button[class*="bg-blue"]')
@@ -40,7 +40,7 @@ class IuranFormTest extends DuskTestCase
 
         Iuran::factory()->create([
             'id_warga' => $warga->id,
-            'bulan' => date('Y') . '-01-01',
+            'bulan' => date('Y').'-01-01',
             'jumlah_iuran' => 50000,
             'status' => 'pending',
         ]);
