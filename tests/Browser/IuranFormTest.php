@@ -22,12 +22,14 @@ class IuranFormTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/iuran')
                 ->waitForText('Daftar Iuran')
-                ->click('button[class*="bg-blue"]')
-                ->waitForText('Tambah Iuran Baru')
-                ->assertSee('Nama Warga')
-                ->assertSee('Bulan')
-                ->assertSee('Jumlah Iuran')
-                ->assertSee('Status');
+                ->click('button.btn-brick')
+                ->waitForText('Catat Iuran Baru')
+                ->waitFor('.inline-block.align-bottom')
+                ->assertVisible('#id_warga')
+                ->assertVisible('#bulan_bulan')
+                ->assertVisible('#jumlah_iuran')
+                ->assertVisible('#status-pending')
+                ->assertVisible('#status-selesai');
         });
     }
 
